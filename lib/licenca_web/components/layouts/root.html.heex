@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title default="Koleus" suffix=" · Empresarial">
+      {assigns[:page_title]}
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
+    </script>
+    <script>
+      (() => {
+        const setTheme = (theme) => {
+          if (theme === "system") {
+            localStorage.removeItem("phx:theme");
+            document.documentElement.removeAttribute("data-theme");
+          } else {
+            localStorage.setItem("phx:theme", theme);
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+        };
+        if (!document.documentElement.hasAttribute("data-theme")) {
+          setTheme(localStorage.getItem("phx:theme") || "system");
+        }
+        window.addEventListener("storage", (e) => e.key === "phx:theme" && setTheme(e.newValue || "system"));
+        window.addEventListener("phx:set-theme", ({ detail: { theme } }) => setTheme(theme));
+      })();
+    </script>
+  </head>
+  <body>
+    <ul class="menu menu-horizontal shadow-lg relative z-10 w-full flex items-center gap-1 px-4 sm:px-6 lg:px-8 justify-end">
+      <%= if @current_scope do %>
+        <div class="navbar bg-base-100">
+          <div class="navbar-start">
+            <div class="dropdown">
+              <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h7"
+                  />
+                </svg>
+              </div>
+              <ul
+                tabindex="0"
+                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <.link href={~p"/"}>
+                    <.icon name="hero-home" class="w-5 h-5" /> Home
+                  </.link>
+                </li>
+
+                <li>
+                  <.link href={~p"/empresas"}>
+                    <.icon name="hero-building-office-2" class="w-5 h-5" /> Empresas
+                  </.link>
+                </li>
+
+                <li>
+                  <.link href={~p"/status"}>
+                    <.icon name="hero-arrow-path" class="w-5 h-5" /> Status
+                  </.link>
+                </li>
+
+                <li>
+                  <.link href={~p"/users/settings"}>
+                    <.icon name="hero-cog-6-tooth" class="w-5 h-5" /> Configuração
+                  </.link>
+                </li>
+                <li>
+                  <.link href={~p"/users/log-out"} method="delete">
+                    <.icon name="hero-arrow-right-end-on-rectangle" class="w-5 h-5" /> Sair
+                  </.link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="navbar-center">
+            <a href="/" class="btn btn-ghost text-xl">Koleus Sistemas</a>
+          </div>
+          <div class="navbar-end">
+            <div class="ml-auto flex items-center">
+              <li>
+                <.link href={~p"/users/settings"}>
+                  <.icon name="hero-cog-6-tooth" class="w-5 h-5" />
+                </.link>
+              </li>
+              <li>
+                <.link href={~p"/users/log-out"} method="delete">
+                  <.icon name="hero-arrow-right-end-on-rectangle" class="w-5 h-5" />
+                </.link>
+              </li>
+            </div>
+          </div>
+        </div>
+        
+<!-- Drawer Fixo 
+        <div class="drawer lg:drawer-open">
+          <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+          <div class="drawer-content flex flex-col items-center justify-center">            
+            {@inner_content}
+            <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">
+              Open drawer
+            </label>
+          </div>
+          <div class="drawer-side">
+            <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+            <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+              <li>
+                <.link href={~p"/"}>
+                  <.icon name="hero-home" class="w-5 h-5" /> Home
+                </.link>
+              </li>
+              <li>
+                <.link href={~p"/empresas"}>
+                  <.icon name="hero-building-office-2" class="w-5 h-5" /> Empresas
+                </.link>
+              </li>
+              <li>
+                <.link href={~p"/status"}>
+                  <.icon name="hero-arrow-path" class="w-5 h-5" /> Status
+                </.link>
+              </li>
+              <li>
+                <.link href={~p"/users/settings"}>
+                  <.icon name="hero-cog-6-tooth" class="w-5 h-5" /> Configuração
+                </.link>
+              </li>
+              <li>
+                <.link href={~p"/users/log-out"} method="delete">
+                  <.icon name="hero-arrow-right-end-on-rectangle" class="w-5 h-5" /> Sair
+                </.link>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+
+        <!-- Drawer Flexivel 
+        <div class="drawer">
+          <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+          <div class="drawer-content">            
+            <label for="my-drawer">
+            <.icon name="hero-bars-3" class="w-5 h-5" />
+            </label>
+          </div>
+          <div class="drawer-side">
+            <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+            <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+              <li>
+                <.link href={~p"/"}>
+                  <.icon name="hero-home" class="w-5 h-5" /> Home
+                </.link>
+              </li>
+              <li>
+                <.link href={~p"/empresas"}>
+                  <.icon name="hero-building-office-2" class="w-5 h-5" /> Empresas
+                </.link>
+              </li>
+              <li>
+                <.link href={~p"/status"}>
+                  <.icon name="hero-arrow-path" class="w-5 h-5" /> Status
+                </.link>
+              </li>
+              <li>
+                <.link href={~p"/users/settings"}>
+                  <.icon name="hero-cog-6-tooth" class="w-5 h-5" /> Configuração
+                </.link>
+              </li>
+              <li>
+                <.link href={~p"/users/log-out"} method="delete">
+                  <.icon name="hero-arrow-right-end-on-rectangle" class="w-5 h-5" /> Sair
+                </.link>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+      <% else %>
+        <!-- <li>
+          <.link href={~p"/users/register"}>Registrar</.link>
+        </li> -->
+        <li>
+          <.link href={~p"/users/log-in"}>Entrar</.link>
+        </li>
+      <% end %>
+    </ul>
+    {@inner_content}
+  </body>
+</html>

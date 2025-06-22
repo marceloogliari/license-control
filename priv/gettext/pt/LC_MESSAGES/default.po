@@ -1,0 +1,85 @@
+#: lib/licenca_web/components/core_components.ex:340
+#, elixir-autogen, elixir-format
+msgid "Actions"
+msgstr ""
+
+#: lib/licenca_web/components/layouts.ex:83
+#: lib/licenca_web/components/layouts.ex:95
+#, elixir-autogen, elixir-format
+msgid "Attempting to reconnect"
+msgstr ""
+
+#: lib/licenca_web/components/layouts.ex:90
+#, elixir-autogen, elixir-format
+msgid "Something went wrong!"
+msgstr ""
+
+#: lib/licenca_web/components/layouts.ex:78
+#, elixir-autogen, elixir-format
+msgid "We can't find the internet"
+msgstr ""
+
+#: lib/licenca_web/components/core_components.ex:75
+#, elixir-autogen, elixir-format
+msgid "close"
+msgstr ""
+
+#: lib/licenca_web/components/core_components.ex:75
+#, elixir-autogen, elixir-format
+msgid "Welcome back!"
+msgstr "Bem-vindo novamente!"
+
+msgid "Company changed successfully."
+msgstr "Empresa alterada com sucesso."
+
+msgid "Company successfully registered."
+msgstr "Empresa cadastrada com sucesso."
+
+msgid "Register Company"
+msgstr "Cadastrar Empresa"
+
+msgid "Edit Company"
+msgstr "Editar Empresa"
+
+msgid "Save"
+msgstr "Salvar"
+
+msgid "Name"
+msgstr "Nome"
+
+msgid "Date License"
+msgstr "Data Licença"
+
+msgid "Invalid email or password"
+msgstr "Email ou senha inválidos"
+
+msgid "Log in"
+msgstr "Entrar"
+
+msgid "Keep me logged in"
+msgstr "Manter-me conectado"
+
+msgid "You need to reauthenticate to perform sensitive actions on your account."
+msgstr "Você precisa reautenticar para realizar ações sensíveis em sua conta."
+
+msgid "Don't have an account? Sign up for an account now."
+msgstr "Não tem uma conta? Cadastre-se agora."
+
+msgid "Log in with email"
+msgstr "Entrar com email"
+
+msgid "Password"
+msgstr "Senha"
+
+msgid "Don't have an account? "
+msgstr "Não tem uma conta?"
+
+msgid "Sign up"
+msgstr "Cadastre-se"
+
+msgid "for an account now."
+msgstr "para ter uma conta agora."
+
+msgid "Email"
+msgstr "E-mail"
+

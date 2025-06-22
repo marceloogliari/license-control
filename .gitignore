@@ -1,0 +1,30 @@
+# Build artifacts
+_build/
+deps/
+*.ez
+
+# Generated files
+erl_crash.dump
+*.beam
+
+# Environment files
+.env
+.env.local
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Database
+*.db
+*.sqlite
+
+# Logs
+*.log
+/logs/
+
+# Assets (se usar assets)
+/priv/static/assets/
+/priv/static/cache_manifest.json
+_build/
+deps/
